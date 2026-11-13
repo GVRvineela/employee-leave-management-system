@@ -105,6 +105,11 @@ def view_leaves():
     for leave in leaves:
         print(leave)
 
+def show_project_info():
+    print("\nEmployee Leave Management System")
+    print("Version: 2.0")
+    print("Developed using Python")
+    print("Version Control: Git and GitHub")
 
 def main():
     while True:
@@ -114,6 +119,7 @@ def main():
         print("3. Apply Leave")
         print("4. View Leave Applications")
         print("5. Exit")
+        print("6. Project Information")
 
         choice = input("Enter your choice: ")
 
@@ -128,6 +134,8 @@ def main():
         elif choice == "5":
             print("Exiting application...")
             break
+        elif choice == "6":
+            show_project_info()
         else:
             print("Invalid choice!")
 
