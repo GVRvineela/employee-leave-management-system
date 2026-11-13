@@ -26,3 +26,22 @@ leave applications.
 3. Run the following command:
 
 python main.py
+
+## Leave Approval Rules
+
+The system follows these approval rules:
+
+- Leave requests up to 5 days are automatically approved.
+- Leave requests exceeding 5 days require manager approval.
+- Invalid employee IDs are rejected.
+- Leave days must be greater than zero.
+
+## Data Storage
+
+Employee and leave information is stored
+in JSON files inside the data folder.
+
+## Git Workflow
+
+This project uses Git for version control
+and GitHub for remote repository management.
