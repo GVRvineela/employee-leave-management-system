@@ -50,22 +50,49 @@ def view_employees():
 
 def apply_leave():
     leaves = load_data(LEAVE_FILE)
+    employees = load_data(EMPLOYEE_FILE)
 
     emp_id = input("Enter Employee ID: ")
-    days = int(input("Enter number of leave days: "))
+
+    employee_exists = any(
+        emp["employee_id"] == emp_id
+        for emp in employees
+    )
+
+    if not employee_exists:
+        print("Employee ID not found!")
+        return
+
+    try:
+        days = int(input("Enter number of leave days: "))
+
+        if days<=0:
+            print("Leave days must be greater than zero.")
+            return
+        
+    except ValueError:
+        print("Please enter a valid number.")
+        return
+
     reason = input("Enter leave reason: ")
+
+    if days>5:
+        status = "Pending Manager Approval"
+    else:
+        status = "Approved"
 
     leave = {
         "employee_id": emp_id,
         "days": days,
         "reason": reason,
-        "status": "Approved"
+        "status": status
     }
 
     leaves.append(leave)
     save_data(LEAVE_FILE, leaves)
 
-    print("Leave application submitted successfully!")
+    print("Leave application submitted!")
+    print("Application Status:", status)
 
 
 def view_leaves():
